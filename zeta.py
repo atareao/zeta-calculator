@@ -94,15 +94,15 @@ class MainWindow:
 	
 	def on_button3_clicked(self,widget):
 		if (len(self.entry1.get_text())>0) & (os.path.exists(self.entry1.get_text())==True) & (len(self.entry2.get_text())>0):
+			
 			widget.window.set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
 			self.conn = httplib.HTTPConnection("www.geonames.org")
 			tree = etree.parse(self.entry1.get_text())
 			root = tree.getroot()
 			for element in list(root):
 				if element.tag.endswith("Document"):
-					elements=[]
 					for element2 in list(element):
-						elements+=self.buscaplacemarks(element2)
+						self.buscaplacemarks(element2)
 			tree._setroot(root)
 			tree.write(self.entry2.get_text())
 			widget.window.set_cursor(None)
@@ -140,19 +140,23 @@ class MainWindow:
 			return "Error"
 
 	def buscaplacemarks(self,element):
-		elements=[]
 		if element.tag.endswith("Folder"):
 			for inFolder in list(element):
-				elements+=self.buscaplacemarks(inFolder)
+				self.buscaplacemarks(inFolder)
 		else:
 			if element.tag.endswith("Placemark"):
-				elements.append(element)
 				for hijo in list(element):
-					if hijo.tag.endswith("Point") | hijo.tag.endswith("LineString") | hijo.tag.endswith("LinearRing") | hijo.tag.endswith("Polygon") | hijo.tag.endswith("MultiGeometry"):
+					if hijo.tag.endswith("Point") | hijo.tag.endswith("LineString") | hijo.tag.endswith("LinearRing") | hijo.tag.endswith("Polygon"):
 						for propiedad in list(hijo):
 							if propiedad.tag.endswith("coordinates"):
 								propiedad.text=self.modcoordenadas(propiedad.text)
-		return elements	
+					else:
+						if hijo.tag.endswith("MultiGeometry"):
+							for geometria in list(hijo):
+								if geometria.tag.endswith("Point") | geometria.tag.endswith("LineString") | geometria.tag.endswith("LinearRing") | geometria.tag.endswith("Polygon"):
+									for propiedad in list(geometria):
+										if propiedad.tag.endswith("coordinates"):
+											propiedad.text=self.modcoordenadas(propiedad.text)
 
 if __name__ == "__main__":
 	"""
