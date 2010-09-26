@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<interface>
+  <requires lib="gtk+" version="2.16"/>
+  <!-- interface-naming-policy project-wide -->
+  <object class="GtkDialog" id="dialog">
+    <property name="width_request">610</property>
+    <property name="height_request">295</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Acerca de Picapy</property>
+    <property name="resizable">False</property>
+    <property name="modal">True</property>
+    <property name="icon">picapy.png</property>
+    <property name="type_hint">normal</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="has_separator">False</property>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox1">
+        <property name="visible">True</property>
+        <property name="spacing">2</property>
+        <child>
+          <object class="GtkLayout" id="layout1">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkLabel" id="label1">
+                <property name="width_request">600</property>
+                <property name="height_request">57</property>
+                <property name="visible">True</property>
+                <property name="xalign">0.49000000953674316</property>
+                <property name="label" translatable="yes">Zeta 0.1</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                  <attribute name="scale" value="2,000000"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="x">2</property>
+                <property name="y">57</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="image1">
+                <property name="width_request">600</property>
+                <property name="height_request">50</property>
+                <property name="visible">True</property>
+                <property name="stock">gtk-dialog-info</property>
+                <property name="icon-size">6</property>
+              </object>
+              <packing>
+                <property name="y">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label2">
+                <property name="width_request">600</property>
+                <property name="height_request">49</property>
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Una aplicaci&#xF3;n para poner cotas en archivos kml</property>
+                <property name="justify">center</property>
+                <attributes>
+                  <attribute name="scale" value="1,100000"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="x">1</property>
+                <property name="y">115</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label3">
+                <property name="width_request">600</property>
+                <property name="height_request">24</property>
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Copyright &#xA9; 2010 Lorenzo Carbonell &lt;lorenzo.carbonell.cerezo@gmail.com&gt;</property>
+                <property name="justify">center</property>
+                <property name="single_line_mode">True</property>
+              </object>
+              <packing>
+                <property name="y">165</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLinkButton" id="linkbutton1">
+                <property name="label" translatable="yes">http://www.atareao.es</property>
+                <property name="width_request">600</property>
+                <property name="height_request">52</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="has_tooltip">True</property>
+                <property name="relief">none</property>
+                <property name="focus_on_click">False</property>
+                <property name="uri">http://www.atareao.es</property>
+              </object>
+              <packing>
+                <property name="y">186</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area1">
+            <property name="visible">True</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="button1">
+                <property name="label" translatable="yes">Cr&#xE9;ditos</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_button1_clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button2">
+                <property name="label" translatable="yes">Licencia</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_button2_clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button3">
+                <property name="label" translatable="yes">Cerrar</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_button3_clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">button1</action-widget>
+      <action-widget response="0">button2</action-widget>
+      <action-widget response="0">button3</action-widget>
+    </action-widgets>
+  </object>
+</interface>
